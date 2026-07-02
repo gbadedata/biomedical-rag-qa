@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.venv/
+data/ori_pqal.json
+data/*.tsv

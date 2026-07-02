@@ -1,0 +1,90 @@
+{
+  "corpus": {
+    "n_questions": 1000,
+    "n_passages": 3358,
+    "avg_passages_per_question": 3.36,
+    "avg_tokens_per_passage": 59.6,
+    "decision_distribution": {
+      "yes": 552,
+      "no": 338,
+      "maybe": 110
+    }
+  },
+  "retrieval": {
+    "dense_lsa_faiss": {
+      "recall_at_k": {
+        "1": 0.2506,
+        "3": 0.5235,
+        "5": 0.6019,
+        "10": 0.6867
+      },
+      "precision_at_k": {
+        "1": 0.802,
+        "3": 0.5657,
+        "5": 0.3946,
+        "10": 0.2248
+      },
+      "mrr": 0.8464,
+      "n_questions": 1000
+    },
+    "bm25": {
+      "recall_at_k": {
+        "1": 0.2998,
+        "3": 0.6121,
+        "5": 0.6733,
+        "10": 0.7307
+      },
+      "precision_at_k": {
+        "1": 0.943,
+        "3": 0.6543,
+        "5": 0.4352,
+        "10": 0.2369
+      },
+      "mrr": 0.9585,
+      "n_questions": 1000
+    },
+    "random": {
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.001,
+        "10": 0.0024
+      },
+      "precision_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0006,
+        "10": 0.0008
+      },
+      "mrr": 0.0013,
+      "n_questions": 1000
+    }
+  },
+  "answering": {
+    "n_train": 700,
+    "n_test": 300,
+    "top_k": 3,
+    "class_distribution": {
+      "yes": 552,
+      "no": 338,
+      "maybe": 110
+    },
+    "majority_baseline": {
+      "accuracy": 0.5533,
+      "macro_f1": 0.2375,
+      "predicts": "yes"
+    },
+    "question_only": {
+      "accuracy": 0.5167,
+      "macro_f1": 0.4101
+    },
+    "retrieved_context": {
+      "accuracy": 0.46,
+      "macro_f1": 0.3371
+    },
+    "gold_context": {
+      "accuracy": 0.55,
+      "macro_f1": 0.4152
+    }
+  }
+}

@@ -1,0 +1,8 @@
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+faiss-cpu>=1.7
+rank_bm25>=0.2.2
+requests>=2.31
+anthropic>=0.39        # only needed for the generation step
+pytest>=7.0            # tests
