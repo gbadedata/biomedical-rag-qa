@@ -49,9 +49,7 @@ evaluation attached.
 
 The pipeline has five stages, each an importable module:
 
-```
-ingest ─▶ corpus ─▶ retrieve ─▶ generate ─▶ evaluate
-```
+![The biomedqa pipeline: ingest, corpus, retrieve, generate, evaluate](assets/rag_pipeline.png)
 
 It ships with a command-line interface, unit tests, and a full evaluation on PubMedQA
 whose numbers are reproduced under `results/`.
@@ -187,6 +185,8 @@ itself. The point of this design is to isolate the contribution of retrieval to 
 | Dense (LSA + FAISS) | 0.802 | 0.602 | 0.687 | 0.846 |
 | Random baseline | 0.000 | 0.001 | 0.002 | 0.001 |
 
+![Retrieval on PubMedQA: BM25 beats the dense vector index on every metric](assets/rag_retrieval.png)
+
 **Interpretation.** BM25 puts a gold passage in first place for 94.3% of questions, and
 its MRR of 0.959 means the first relevant passage is almost always rank 1 or 2. It beats
 the dense LSA index on every metric. The reason is that PubMedQA questions are written from
@@ -220,7 +220,11 @@ majority-class baseline.
 | Retrieved context (BM25 top-3) | 0.460 | 0.337 |
 | Gold context (perfect retrieval) | 0.550 | 0.415 |
 
+![Answering yes/no/maybe: retrieval lifts F1 but no condition beats the baseline accuracy](assets/rag_answering.png)
+
 Per-class F1 under gold context: **yes 0.672, no 0.374, maybe 0.200**.
+
+![The reader collapses on the ambiguous maybe class](assets/rag_per_class.png)
 
 **Interpretation.** The classifier lifts macro-F1 far above the baseline (0.237 to 0.41)
 by learning the minority classes the baseline ignores entirely, but no linear condition
